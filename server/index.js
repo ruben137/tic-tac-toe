@@ -13,8 +13,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new SocketServer(server, {
   cors: {
-    origin: process.env.CLIENT_URL
+    origin: process.env.CLIENT_URL,
   },
+  transports: ["websocket"],
 });
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
