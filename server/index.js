@@ -11,7 +11,7 @@
 // Initializations
 // const app = express();
 
-const io = require("socket.io")(5000);
+const io = require("socket.io")(process.env.PORT);
 
 // // Middlewares
 // app.use(cors());
