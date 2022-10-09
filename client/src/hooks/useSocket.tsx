@@ -18,7 +18,7 @@ export function SocketProvider({ children }: Props) {
     if (!id) return;
     const newSocket = io(process.env.REACT_APP_SERVER as string, {
       query: { id },
-      transports: ["websocket"],
+      transports: ["websocket", "polling"],
     });
     setSocket(newSocket);
     return () => newSocket.close();

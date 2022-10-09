@@ -15,7 +15,7 @@ const io = new SocketServer(server, {
   cors: {
     origin: process.env.CLIENT_URL,
   },
-  transports: ["websocket"],
+  transports: ["websocket", "polling"],
 });
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
