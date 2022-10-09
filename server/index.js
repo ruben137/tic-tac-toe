@@ -1,32 +1,24 @@
-import express from "express";
-import http from "http";
-import morgan from "morgan";
-import { Server as SocketServer } from "socket.io";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+// import express from "express";
+// // import http from "http";
+// // import morgan from "morgan";
+// import * as socket from "socket.io";
+// import { join, dirname } from "path";
+// import { fileURLToPath } from "url";
 
-import { PORT } from "./config.js";
-import cors from "cors";
+// import { PORT } from "./config.js";
+// import cors from "cors";
 
 // Initializations
-const app = express();
-const server = http.createServer(app);
-const io = new SocketServer(server, {
-  cors: {
-    origin: process.env.CLIENT_URL,
-  },
-  path: "/socket.io",
-  transports: ["websocket", "polling"],
-  secure: true,
-});
-const __dirname = dirname(fileURLToPath(import.meta.url));
+// const app = express();
 
-// Middlewares
-app.use(cors());
-app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: false }));
+const io = require("socket.io")(5000);
 
-app.use(express.static(join(__dirname, "../client/build")));
+// // Middlewares
+// app.use(cors());
+// app.use(morgan("dev"));
+// app.use(express.urlencoded({ extended: false }));
+
+// app.use(express.static(join(__dirname, "../client/build")));
 
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
@@ -63,5 +55,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT);
-console.log(`server on port ${PORT}`);
+
