@@ -27,7 +27,8 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 
 // app.use(express.static(join(__dirname, "../client/build")));
-
+server.listen(PORT);
+console.log(`server on port ${PORT}`);
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
   let rooms = io.sockets.adapter.rooms;
@@ -63,5 +64,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT);
-console.log(`server on port ${PORT}`);
+
