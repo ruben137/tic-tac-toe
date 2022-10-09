@@ -91,7 +91,6 @@ export const useMultiplayer = () => {
     return () => socket?.close();
   }, [socket]);
 
-
   useEffect(() => {
     if (!socket) return;
     socket.on("receive-rematch", () => {
@@ -128,7 +127,8 @@ export const useMultiplayer = () => {
     socket.emit("send-move", { char, row, index, game });
   };
 
-  const handleSendRematch = () => {
+  const handleSendRematch = (e: any) => {
+    e.stopPropagation();
     socket.emit("send-rematch");
     toast.success("Address request sended");
   };
