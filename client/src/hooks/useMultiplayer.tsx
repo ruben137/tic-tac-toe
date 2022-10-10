@@ -130,7 +130,7 @@ export const useMultiplayer = () => {
   const handleSendRematch = (e: any) => {
     e.stopPropagation();
     socket.emit("send-rematch");
-    toast.success("Address request sended");
+    toast.success("Rematch request sended");
   };
   const handleAcceptRematch = () => {
     setFireworks("");
