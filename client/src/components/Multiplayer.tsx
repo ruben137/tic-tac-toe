@@ -5,6 +5,7 @@ import {
   Button,
   Backdrop,
   CircularProgress,
+  Fab,
 } from "@mui/material";
 import { blue, green, grey } from "@mui/material/colors";
 import React, { useRef } from "react";
@@ -14,6 +15,8 @@ import { useMultiplayer } from "../hooks/useMultiplayer";
 import FullMatchDialog from "./FullMatchDialog";
 import RematchDialog from "./RematchDialog";
 import { useNavigate } from "react-router-dom";
+import { ArrowBackIos } from "@mui/icons-material";
+import ConfirmDialog from "./ConfirmDialog";
 
 const Multiplayer = () => {
   const ref = useRef<FireworksHandlers>(null);
@@ -34,10 +37,12 @@ const Multiplayer = () => {
     rematchDialog,
     handleRejectRematch,
     handleAcceptRematch,
+    handleLeft,
   } = useMultiplayer();
   const navigate = useNavigate();
   return (
     <>
+      <ConfirmDialog onAccept={handleLeft} />
       <RematchDialog
         open={rematchDialog}
         onAccept={handleAcceptRematch}

@@ -143,6 +143,10 @@ export const useMultiplayer = () => {
     socket.emit("reject-rematch");
     navigate("/");
   };
+  const handleLeft = () => {
+    socket.emit("left", { player });
+    navigate("/")
+  };
   useBeforeunload(() => {
     socket.emit("left", { player });
   });
@@ -167,5 +171,6 @@ export const useMultiplayer = () => {
     rematchDialog,
     handleAcceptRematch,
     handleRejectRematch,
+    handleLeft
   };
 };
