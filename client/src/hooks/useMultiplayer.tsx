@@ -45,6 +45,7 @@ export const useMultiplayer = () => {
       toast.success("Player 2 joined to the match");
       setFireworks("");
       setLoading(false);
+      handleResetGame();
     });
     return () => socket?.close();
   }, [socket]);
@@ -60,6 +61,7 @@ export const useMultiplayer = () => {
     socket?.on("created", () => {
       setLoading(false);
       toast.success("You have joined the game");
+      handleResetGame();
     });
     return () => socket?.close();
   }, [socket]);
@@ -145,7 +147,7 @@ export const useMultiplayer = () => {
   };
   const handleLeft = () => {
     socket.emit("left", { player });
-    navigate("/")
+    navigate("/");
   };
   useBeforeunload(() => {
     socket.emit("left", { player });
@@ -171,6 +173,6 @@ export const useMultiplayer = () => {
     rematchDialog,
     handleAcceptRematch,
     handleRejectRematch,
-    handleLeft
+    handleLeft,
   };
 };
