@@ -220,6 +220,7 @@ export const useTicTacToe = () => {
     game,
     handleMovement,
     turn,
+    setTurn,
     winner,
     count,
     winnerPositions,

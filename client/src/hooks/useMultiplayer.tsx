@@ -31,6 +31,7 @@ export const useMultiplayer = () => {
     encodedWinner,
     setWinners,
     setFireworks,
+    setTurn,
   } = useTicTacToe();
   const { socket }: any = useSocket();
   const [loading, setLoading] = useState<boolean>(false);
@@ -45,6 +46,7 @@ export const useMultiplayer = () => {
       toast.success("Player 2 joined to the match");
       setFireworks("");
       setLoading(false);
+      setTurn(1);
       handleResetGame();
     });
     return () => socket?.close();
@@ -61,6 +63,7 @@ export const useMultiplayer = () => {
     socket?.on("created", () => {
       setLoading(false);
       toast.success("You have joined the game");
+      setTurn(1);
       handleResetGame();
     });
     return () => socket?.close();
