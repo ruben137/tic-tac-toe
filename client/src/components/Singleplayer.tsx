@@ -160,7 +160,7 @@ const Singleplayer = () => {
         <Grid item xs={12}>
           <Box sx={{ mt: 2 }}>
             <Typography textAlign={"center"}>
-              Share this link with a friend to play
+              Share this link to play with a friend
               <br />
               <Box
                 sx={{ bgcolor: grey[100], border: `1px solid ${grey[400]}` }}
